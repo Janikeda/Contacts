@@ -1,5 +1,4 @@
 import React from 'react';
-import CONTACTS from '../data/contacts';
 
 export default class PhoneContacts extends React.Component {
   render() {
@@ -19,6 +18,7 @@ export default class PhoneContacts extends React.Component {
 		                        VKontakte!
 		                    </a>
 					</div>
+				<button onClick={this.props.onRemove} className="contact-book-link">Delete</button>
 		</div>;
   }
 }; 

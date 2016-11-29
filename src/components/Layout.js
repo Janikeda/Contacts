@@ -9,6 +9,15 @@ export default class ContactApp extends React.Component {
   		this.state = {displayedContacts: CONTACTS};
  	}
 
+
+  removeContacts(contact) {
+    const newState = this.state.displayedContacts;
+    if (newState.indexOf(contact) > -1) {
+      newState.splice(newState.indexOf(contact), 1);
+      this.setState({displayedContacts: newState})
+      }
+    }
+  
   handlerSearch (e) {
 
 	const searchQuery = e.target.value.toLowerCase();
@@ -30,13 +39,14 @@ export default class ContactApp extends React.Component {
   			id={contact.id}
   			phoneNumber={contact.phoneNumber}
   			image={contact.image}
-
+        onRemove={this.removeContacts.bind(this, contact)}
   		/>);
 
     return <div className="app">
 				<div className="header">Contacts</div>
 				<SearchContacts onSearch={this.handlerSearch.bind(this)}/>
 				<div className="contacts-list">{PhoneNumbers}</div>
+
 
 			</div>;
   }
